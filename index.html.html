@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Private Surprise 💌</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+text-align:center;
+color:white;
+background:linear-gradient(-45deg,#ff4e8a,#ff758c,#ff1e56,#ff3d77);
+background-size:400% 400%;
+animation:gradient 10s ease infinite;
+overflow:hidden;
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+padding:40px 20px;
+max-width:500px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(12px);
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+position:relative;
+}
+
+input{
+padding:10px;
+border-radius:20px;
+border:none;
+margin-top:10px;
+}
+
+button{
+margin:10px;
+padding:12px 25px;
+font-size:16px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff1e56;
+cursor:pointer;
+transition:0.3s;
+position:relative;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffe6f0;
+}
+
+.hidden{display:none;}
+
+img{
+width:150px;
+border-radius:15px;
+margin:8px;
+box-shadow:0 0 15px rgba(255,255,255,0.6);
+}
+
+.heart{
+position:fixed;
+color:rgba(255,255,255,0.7);
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- PASSWORD SCREEN -->
+<div class="card" id="login">
+<h2>🔐 Private For Mr Burnwal</h2>
+<p>Only you can unlock this baby 😘💌</p>
+<input type="password" id="pass" placeholder="Enter Password">
+<br>
+<button onclick="checkPassword()">❤️Unlock❤️</button>
+<p id="wrong"></p>
+</div>
+
+<!-- A small SURPRISE -->
+<div class="card hidden" id="step1">
+<h1>Hello Mr husband 💖</h1>
+<h2>My cutepieeeee 😘</h2>
+<p>You unlocked my heart again...</p>
+<p><b><i> You are not just my love, you are my destiny😘❤️</p></b></i>
+<button onclick="nextStep(1)">Continue 🔥</button>
+</div>
+
+<div class="card hidden" id="step2">
+<h2>Our Beautiful Memories 📸</h2>
+<p><b><i>You are the reason my heart beats a little faster and my world shines a little brighter ❤️</b></i></p>
+
+<video loop controls="" src="video1.mp4.mp4"width="700"height="300" ></video>
+
+<br>
+<button onclick="nextStep(2)">❤️Next❤️ </button>
+</div>
+
+<div class="card hidden" id="step3">
+<h2>I can't explain the feelings I have for you in words, so these are some lines for you💖 </h2>
+<p><b>You are my calm in every strom and my peace in all the chaos😌💖. In a world that keeps changing, you are the one constant I hold on to❤️. 
+no matter how busy or complicated life becomes, I will always choos you❤️ - not just because I love you, but because you are <i>my comfort, my safest hug, my strength, and my forever priority❤️</b></i></p>
+
+<video loop controls="" src="video2.mp4.mp4"width="700"height="300" ></video>
+
+<br>
+<button onclick="nextStep(3)">❤️Next❤️ </button>
+</div>
+
+<div class="card hidden" id="step4">
+<h3> I don't need a fairytale... because loving you is already magical 😌🔥💖</h3>
+<p><b>Will You be my <i>Valentine</i> 💍💖 today and my love for all tmorrows...?</b></p>
+
+<button onclick="yesClicked()">YES 💖</button>
+<button id="noBtn" onmouseover="moveButton()">NO 😜</button>
+
+<p id="response"></p>
+</div>
+
+</div>
+
+<script>
+
+function checkPassword(){
+var password=document.getElementById("pass").value;
+if(password==="iloveyou"){
+document.getElementById("login").classList.add("hidden");
+document.getElementById("step1").classList.remove("hidden");
+document.getElementById("bgMusic").play();
+}else{
+document.getElementById("wrong").innerHTML="Wrong password 😏 Only Bubu knows it!";
+}
+}
+
+function nextStep(step){
+document.getElementById("step"+step).classList.add("hidden");
+document.getElementById("step"+(step+1)).classList.remove("hidden");
+}
+
+function yesClicked(){
+document.getElementById("response").innerHTML=
+"You just made me the happiest girl alive my hero 😘🔥 I love you more than words can say ❤️";
+}
+
+function moveButton(){
+var button=document.getElementById("noBtn");
+button.style.position="absolute";
+button.style.left=Math.random()*300+"px";
+button.style.top=Math.random()*200+"px";
+}
+
+for(let i=0;i<25;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
